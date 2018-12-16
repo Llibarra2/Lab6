@@ -2,7 +2,6 @@
 Lester Ibarra
 80578839
 Diego Aguirre
-
 This program will implement topological sort into a hardcoded given graph in order to
 determine the best path for the graph, meaning the least amount of weight
 '''
@@ -42,14 +41,25 @@ class Graph: #class made for a graph data structure
         # Print contents of the stack 
         print (stack)
 def main():
-    test= Graph(6) 
-    test.Add_Edge(5, 2); 
-    test.Add_Edge(5, 0); 
-    test.Add_Edge(4, 0); 
-    test.Add_Edge(4, 1); 
-    test.Add_Edge(2, 3); 
-    test.Add_Edge(3, 1); 
+    user = input("\nChoose one of the following options: \nA)Hard Coded\nB)Custom \n")
+    if user == 'A' or user == 'a':
+        test= Graph(6) 
+        test.Add_Edge(5, 2); 
+        test.Add_Edge(5, 0); 
+        test.Add_Edge(4, 0); 
+        test.Add_Edge(4, 1); 
+        test.Add_Edge(2, 3); 
+        test.Add_Edge(3, 1); 
       
-    print ("Path of given graph: ")
-    test.topologicalSort()
+        print ("Path of given graph: ")
+        test.topologicalSort()
+    elif user== 'B' or user=='b':#Used for user custom graph
+        size = input("Input graph size")
+        test = Graph(size)
+        for i in range(size):
+            src = input("\nChoose source: ")
+            dest = input("\nChoose destination: ")
+            test.Add_Edge(src, dest)
+        print ("Path of given graph: ")
+        test.topologicalSort()
 main()
